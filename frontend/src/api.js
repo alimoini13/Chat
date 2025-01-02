@@ -31,7 +31,7 @@ apiClient.interceptors.request.use(
 // public routes
 
 export const login = async (data) => {
-  console.log('host',typeof window.location.host,window.location.host)
+  console.log('host',window.location.host.indexOf('localhost'),window.location.host)
   try {
     return await apiClient.post('/auth/login', data);
   } catch (exception) {
