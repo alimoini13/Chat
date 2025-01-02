@@ -7,7 +7,7 @@ const apiClient = axios.create({
   // : `${window.location.host}/api`;
   baseURL:
     window.location.host.indexOf('localhost') >= 0
-      ? 'http://localhost:1000/api'
+      ? 'http://localhost:5002/api'
       : `${window.location.host}/api`,
   timeout: 1000,
 });
