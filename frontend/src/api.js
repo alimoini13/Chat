@@ -7,7 +7,7 @@ const apiClient = axios.create({
   // : `${window.location.host}/api`;
   baseURL:
     window.location.host.indexOf('localhost') >= 0
-      ? 'http://localhost:5002/api'
+      ? 'http://localhost:1000/api'
       : `${window.location.host}/api`,
   timeout: 1000,
 });
@@ -31,6 +31,7 @@ apiClient.interceptors.request.use(
 // public routes
 
 export const login = async (data) => {
+  console.log('host',typeof window.location.host,window.location.host)
   try {
     return await apiClient.post('/auth/login', data);
   } catch (exception) {
