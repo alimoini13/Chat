@@ -1,9 +1,45 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { styled } from '@mui/system';
+// import Sidebar from './Sidebar/Sidebar';
+// import FriendsSidebar from './FriendsSidebar/FriendsSidebar';
+// import Messenger from './Messenger/Messenger';
+// import AppBar from './AppBar/AppBar';
+import { logout } from '../shared/utils/auth';
+import { connectWithSocketServer } from '../realTimeCommunication/socketConnection';
 
+// import Room from './Room/Room';
 const Dashboard = () => {
-  return (
-    <div>Dashboard</div>
-  )
-}
+  const { isUserInRoom } = useSelector((state) => state.room);
 
-export default Dashboard
+  const Wrapper = styled('div')({
+    width: '100%',
+    height: '100vh',
+    display: 'flex',
+  });
+
+  useEffect(() => {
+    const userDetails = localStorage.getItem('user');
+
+    if (!userDetails) {
+      logout();
+    } else {
+      // setUserDetails(JSON.parse(userDetails));
+
+      connectWithSocketServer(JSON.parse(userDetails));
+    }
+  }, []);
+
+  return (
+    <Wrapper>
+      dashboard
+      {/* <Sidebar />
+      <FriendsSidebar />
+      <Messenger />
+      <AppBar />
+      {isUserInRoom && <Room />} */}
+    </Wrapper>
+  );
+};
+
+export default Dashboard;

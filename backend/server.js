@@ -6,7 +6,7 @@ import cors from 'cors'
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
-
+import { registerSocketServer } from './socketServer.js';
 
 
 const app = express();
@@ -31,8 +31,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/frontend/build/index.html"));
 });
 
-const httpServer = http.Server(app);
-
+const httpServer = http.createServer(app);
+registerSocketServer(httpServer)
 const PORT = process.env.PORT || 4000;
 httpServer.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);
