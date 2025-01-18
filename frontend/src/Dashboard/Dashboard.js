@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { styled } from '@mui/system';
-// import Sidebar from './Sidebar/Sidebar';
+
 // import FriendsSidebar from './FriendsSidebar/FriendsSidebar';
 // import Messenger from './Messenger/Messenger';
 // import AppBar from './AppBar/AppBar';
 import { logout } from '../shared/utils/auth';
 import { connectWithSocketServer } from '../realTimeCommunication/socketConnection';
+import Sidebar from './Sidebar/Sidebar';
 
 // import Room from './Room/Room';
 const Dashboard = () => {
@@ -33,11 +34,11 @@ const Dashboard = () => {
   return (
     <Wrapper>
       dashboard
-      {/* <Sidebar />
-      <FriendsSidebar />
+       <Sidebar />
+      {/* <FriendsSidebar />
       <Messenger />
       <AppBar />
-      {isUserInRoom && <Room />} */}
+      {isUserInRoom && <Room />}  */}
     </Wrapper>
   );
 };
