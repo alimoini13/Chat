@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { styled } from '@mui/system';
 
-// import FriendsSidebar from './FriendsSidebar/FriendsSidebar';
+import FriendsSidebar from './FriendsSidebar/FriendsSidebar';
 // import Messenger from './Messenger/Messenger';
 // import AppBar from './AppBar/AppBar';
 import { logout } from '../shared/utils/auth';
@@ -33,10 +33,10 @@ const Dashboard = () => {
 
   return (
     <Wrapper>
-      dashboard
+    
        <Sidebar />
-      {/* <FriendsSidebar />
-      <Messenger />
+      <FriendsSidebar />
+      {/* <Messenger />
       <AppBar />
       {isUserInRoom && <Room />}  */}
     </Wrapper>

@@ -32,9 +32,7 @@ const userSlice = createSlice({
         state.userDetails = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.userDetails = action.payload;
-        console.log(action.payload);
         localStorage.setItem('user', JSON.stringify(action.payload));
       })
       .addCase(loginUser.rejected, (state, action) => {

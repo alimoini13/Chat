@@ -8,6 +8,7 @@ import {
 export const sendInvitation = createAsyncThunk(
   'friend/sendInvitation',
   async (data) => {
+    console.log('send invitation',data)
     const response = await sendFriendInvitation(data);
     if (response.error) {
       throw Error(response.exception.response.data);

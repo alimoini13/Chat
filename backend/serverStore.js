@@ -71,6 +71,7 @@ export const addNewActiveRoom = (userId, socketId) => {
 };
 
 export const getActiveRooms = () => {
+  console.log('activerooms',activeRooms)
   return [...activeRooms];
 };
 export const getActiveRoom = (roomId) => {

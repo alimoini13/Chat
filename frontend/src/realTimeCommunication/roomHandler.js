@@ -10,7 +10,7 @@ import * as socketConnection from './socketConnection';
 import { store } from './../store';
 
 export const createNewRoom = () => {
-  const successCalbackFunc = () => {
+  // const successCalbackFunc = () => {
     store.dispatch(
       setOpenRoom({ isUserRoomCreator: true, isUserInRoom: true })
     );
@@ -18,7 +18,7 @@ export const createNewRoom = () => {
     // const audioOnly = store.getState().room.audioOnly;
     // store.dispatch(setIsUserJoinedOnlyWithAudio(audioOnly));
     socketConnection.createNewRoom();
-  };
+  // };
   // webRTCHandler.getLocalStreamPreview(false, successCalbackFunc);
 
   // const audioOnly = store.getState().room.audioOnly;
@@ -34,12 +34,12 @@ export const newRoomCreated = (data) => {
 
 export const updateActiveRooms = (data) => {
   const { activeRooms } = data;
+  console.log('data',  activeRooms);
 
   const friends = store.getState().friend.friends;
   const rooms = [];
   const userId = store.getState().user.userDetails?.userDetails?._id;
-  // console.log('userId', userId);
-
+ console.log('userId',userId)
   activeRooms.forEach((room) => {
     const isRoomCreatedByMe = room.roomCreator.userId === userId;
 
@@ -54,6 +54,7 @@ export const updateActiveRooms = (data) => {
     }
   });
   store.dispatch(setActiveRooms({ rooms }));
+  console.log('rooms',rooms)
 };
 
 export const joinRoom = (roomId) => {

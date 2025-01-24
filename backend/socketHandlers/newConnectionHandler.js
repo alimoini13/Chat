@@ -1,10 +1,10 @@
 import { addNewConnectedUser } from './../serverStore.js';
 
-// import updateRooms from './updates/rooms.js';
-// import {
-//   updateFriends,
-//   updateFriendsPendingInvitations,
-// } from './updates/friends.js';
+import updateRooms from './updates/rooms.js';
+import {
+  updateFriends,
+  updateFriendsPendingInvitations,
+} from './updates/friends.js';
 export const newConnectionHandler = async (socket, io) => {
   const userDetails = socket.user;
 
@@ -15,12 +15,12 @@ export const newConnectionHandler = async (socket, io) => {
 
   // update pending friends invitations list
 
-  // updateFriendsPendingInvitations(userDetails.userId);
+  updateFriendsPendingInvitations(userDetails.userId);
 
-  // // update friends list
+  // update friends list
   
-  // updateFriends(userDetails.userId);
-  // setTimeout(() => {
-  //   updateRooms(socket.id);
-  // }, [500]);
+  updateFriends(userDetails.userId);
+  setTimeout(() => {
+    updateRooms(socket.id);
+  }, [500]);
 };

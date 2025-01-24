@@ -49,6 +49,7 @@ export const connectWithSocketServer = (userDetails) => {
   });
 
   socket.on('active-rooms', (data) => {
+    console.log('active rooms',data)
     updateActiveRooms(data);
   });
   socket.on('conn-prepare', (data) => {
@@ -69,6 +70,7 @@ export const getDirectChatHistory = (data) => {
   socket.emit('direct-chat-history', data);
 };
 export const createNewRoom = () => {
+  console.log('room create send to server')
   socket.emit('room-create');
 };
 export const joinRoom = (data) => {

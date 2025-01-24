@@ -14,6 +14,7 @@ const Sidebar = () => {
     backgroundColor: '#202225',
   });
   const { activeRooms, isUserInRoom } = useSelector((state) => state.room);
+  console.log('sidebar',activeRooms)
   return (
     <MainContainer>
       <MainPageButton />
