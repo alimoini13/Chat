@@ -6,6 +6,7 @@ import cors from 'cors'
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 import friendInvitationRoutes from './routes/friendInvitationRoutes.js';
 import { registerSocketServer } from './socketServer.js';
 
@@ -15,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 app.use('/api/auth', authRoutes);
 app.use('/api/friend-invitation', friendInvitationRoutes);
-
+app.use('/api/upload', uploadRoutes);
 
 
 dotenv.config()

@@ -2,6 +2,7 @@ import React from 'react';
 import { styled } from '@mui/system';
 import Avatar from '../../../shared/components/Avatar';
 import Typography from '@mui/material/Typography';
+import { MessageContent } from './MessageContent';
 
 const MainContainer = styled('div')({
   width: '97%',
@@ -18,9 +19,6 @@ const MessageContainer = styled('div')({
   flexDirection: 'column',
 });
 
-const MessageContent = styled('div')({
-  color: '#DCDDDE',
-});
 
 const SameAuthorMessageContent = styled('div')({
   color: '#DCDDDE',
@@ -32,6 +30,7 @@ const SameAuthorMessageText = styled('span')({
 });
 
 const Message = ({ content, sameAuthor, username, date, sameDay }) => {
+  console.log('Message',content)
   if (sameAuthor && sameDay) {
     return (
       <SameAuthorMessageContent>
@@ -50,7 +49,7 @@ const Message = ({ content, sameAuthor, username, date, sameDay }) => {
           {username}{' '}
           <span style={{ fontSize: '12px', color: '#72767d' }}>{date}</span>
         </Typography>
-        <MessageContent>{content}</MessageContent>
+        <MessageContent content={content}/>
       </MessageContainer>
     </MainContainer>
   );

@@ -112,6 +112,32 @@ export const rejectInvitation = async (data) => {
   }
 };
 
+
+export const uploadFileHandler = async (data) => {
+  console.log('apiData',data)
+  const bodyFormData = new FormData();
+  bodyFormData.append('file', data);
+  try {
+    const userDetails = localStorage.getItem('user');
+    const token = JSON.parse(userDetails).userDetails.token;
+
+    const result= await apiClient.post('/upload', bodyFormData, {
+      token: `Bearer ${token}`,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    console.log('result upload route',result)
+    return result
+  } catch (exception) {
+    // checkResponseCode(exception);
+    return {
+      error: true,
+      exception,
+    };
+  }
+};
+
 const checkResponseCode = (exception) => {
   const responseCode = exception?.response?.status;
 
