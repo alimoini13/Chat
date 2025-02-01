@@ -1,11 +1,12 @@
 import React, { useRef,useState } from 'react';
 import { styled } from '@mui/system';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { sendDirectMessage } from '../../realTimeCommunication/socketConnection';
 import { Box, IconButton } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { uploadFileHandler } from '../../api';
+import { openAlertMessage } from '../../features/alert/alertSlice';
 
 
 const MainContainer = styled('div')({
@@ -44,6 +45,7 @@ const NewMessageInput = () => {
   const [message, setMessage] = useState('');
   const [file, setFile] = useState('');
   const [imageSrc, setImageSrc] = useState(null);
+const dispatch = useDispatch();
   const handleMessageValueChange = (event) => {
     setMessage(event.target.value);
   };
@@ -67,14 +69,17 @@ const NewMessageInput = () => {
       setMessage('');
     }
     if(file){
-      console.log('image send',file)
+      try{
+      dispatch(openAlertMessage('Wait for upload'));
       const res=await uploadFileHandler(file)
-      console.log('res uploadFileHandler',res.data.secure_url)
+      console.log('res uploadFileHandler',res)
       sendDirectMessage({
         receiverUserId: chosenChatDetails.id,
         content: res.data.secure_url,
       });
-      setFile('')
+      setFile('')}catch(err){
+        console.log('upload err',err)
+      }
     }
   };
 

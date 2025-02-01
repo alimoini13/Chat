@@ -34,7 +34,7 @@ const Message = ({ content, sameAuthor, username, date, sameDay }) => {
   if (sameAuthor && sameDay) {
     return (
       <SameAuthorMessageContent>
-        <SameAuthorMessageText>{content}</SameAuthorMessageText>
+        <SameAuthorMessageText><MessageContent content={content}/></SameAuthorMessageText>
       </SameAuthorMessageContent>
     );
   }

@@ -15,7 +15,7 @@ export const MessageContent = ({content}) => {
       <img
         src={content}
         alt="Uploaded content"
-        style={{ maxWidth: '100%', borderRadius: '8px' }}
+        style={{ maxWidth: '250px', borderRadius: '8px' }}
       />
     ) : (
       // در غیر این صورت، متن را نمایش می‌دهیم

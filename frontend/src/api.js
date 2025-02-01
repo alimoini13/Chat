@@ -9,7 +9,7 @@ const apiClient = axios.create({
     window.location.host.indexOf('localhost') >= 0
       ? 'http://localhost:5002/api'
       : `https://${window.location.host}/api`,
-  timeout: 3000,
+  // timeout: 3000,
 });
 
 apiClient.interceptors.request.use(
