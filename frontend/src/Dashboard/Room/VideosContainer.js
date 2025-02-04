@@ -1,7 +1,5 @@
 import React from 'react';
 import { styled } from '@mui/system';
-
-// import Video from './Video';
 import { useSelector } from 'react-redux';
 import Video from './Video';
 
@@ -16,6 +14,7 @@ const VideosContainer = () => {
   const { screenSharingStream, remoteStreams, localStream } = useSelector(
     (state) => state.room
   );
+  console.log('1',screenSharingStream, '2',remoteStreams,'3', localStream)
   return (
     <MainContainer>
       <Video
@@ -29,3 +28,4 @@ const VideosContainer = () => {
   );
 };
 export default VideosContainer;
+

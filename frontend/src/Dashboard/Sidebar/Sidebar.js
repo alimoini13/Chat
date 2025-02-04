@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styled } from '@mui/system';
 import MainPageButton from './MainPageButton';
 import CreateRoomButton from './CreateRoomButton';
@@ -14,7 +14,10 @@ const Sidebar = () => {
     backgroundColor: '#202225',
   });
   const { activeRooms, isUserInRoom } = useSelector((state) => state.room);
-  console.log('sidebar',activeRooms)
+  useEffect(() => {
+    console.log('activeRooms changed:', activeRooms);
+  }, [activeRooms]);
+  
   return (
     <MainContainer>
       <MainPageButton />
